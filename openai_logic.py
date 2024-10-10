@@ -1,4 +1,12 @@
 import os
+from openai import OpenAI
+
+
+client = OpenAI(api_key='___')
+
+def input_headers(headers_entry: str):
+    headers = headers_entry.split('\n')
+    return headers
 
 def input_keywords(keyword_entry: str):
     keywords = {}
