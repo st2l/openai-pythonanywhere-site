@@ -74,7 +74,7 @@ def process_headings(subheadings, keywords, output_file='ans.txt'):
         os.makedirs(output_dir)
 
     # Открываем файл для записи
-    with open(output_file, "w", encoding="utf-8") as f:
+    with open(output_file, "w+", encoding="utf-8") as f:
         # Генерация начального текста и вставка ключевых слов для каждого подзаголовка
         for subheading in subheadings:
             initial_text = generate_initial_text(subheading)

@@ -9,6 +9,8 @@ def generate():
     if request.method == 'POST':
         headers = request.form['headers']
         keywords = request.form['keywords']
+        print(headers, keywords)
+        exit(0)
         return send_file(process_headings(input_headers(headers), input_keywords(keywords)))
 
     return render_template('index.html')
