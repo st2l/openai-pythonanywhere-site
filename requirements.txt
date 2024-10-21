@@ -1,2 +1,7 @@
 flask
 openai
+Flask-SQLAlchemy
+Flask-Login
+python-dotenv
+flask-admin
+wtforms==2.3.3

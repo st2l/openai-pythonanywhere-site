@@ -10,6 +10,10 @@
     <div class="container mt-5">
         <h2>Генерация текста</h2>
         <div class="mb-3">
+            <a href="{{ url_for('logout') }}" class="btn btn-link danger">Выход</a>
+            {% if is_admin %}
+                <a href="/admin" class="btn btn-link">Админ. панель</a>
+            {% endif %}
             <a href="{{ url_for('generate') }}" class="btn btn-link">Генерация</a>
             <a href="{{ url_for('uniq') }}" class="btn btn-link">Уникализация</a>
         </div>
