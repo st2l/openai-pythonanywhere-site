@@ -15,7 +15,19 @@ load_dotenv()
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
 app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY')
+
+# configuring the database
 db.init_app(app)
+with app.app_context():
+        db.create_all()  # Создание базы данных
+
+        admin_user = User.query.filter_by(username='admin').first()
+        if not admin_user:
+            new_admin = User(username='admin', password=os.environ.get(
+                'ADMIN_PASSWD'), is_admin=True)
+            db.session.add(new_admin)
+            db.session.commit()
+
 
 # configurate the login manager
 login_manager = LoginManager()
@@ -95,14 +107,6 @@ def logout():
 
 
 if __name__ == "__main__":
-    with app.app_context():
-        db.create_all()  # Создание базы данных
-
-        admin_user = User.query.filter_by(username='admin').first()
-        if not admin_user:
-            new_admin = User(username='admin', password=os.environ.get(
-                'ADMIN_PASSWD'), is_admin=True)
-            db.session.add(new_admin)
-            db.session.commit()
+    
 
     app.run(debug=True)
