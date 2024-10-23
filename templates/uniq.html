@@ -8,7 +8,7 @@
 </head>
 <body>
     <div class="container mt-5">
-        <h2>Генерация текста</h2>
+        <h2>Уникализация</h2>
         <div class="mb-3">
             <a href="{{ url_for('logout') }}" class="btn btn-link danger">Выход</a>
             {% if is_admin %}
@@ -19,7 +19,7 @@
         </div>
         <form action="/uniq" method="POST">
             <div class="form-group">
-                <label for="textarea2">Ключевые слова</label>
+                <label for="textarea2">Исходный текст</label>
                 <textarea name="user-text" class="form-control" id="textarea2" rows="3" placeholder="Введите ваш текст"></textarea>
             </div>
             <button type="submit" class="btn btn-primary">Отправить</button>

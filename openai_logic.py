@@ -1,8 +1,10 @@
 import os
 from openai import OpenAI
+from dotenv import load_dotenv
 
 
-client = OpenAI(api_key='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')
+load_dotenv()
+client = OpenAI(api_key=os.environ.get('OPENAI_TOKEN'))
 
 
 def input_headers(headers_entry: str):
@@ -78,8 +80,7 @@ def process_headings(subheadings, keywords, output_file='ans.txt'):
         # Генерация начального текста и вставка ключевых слов для каждого подзаголовка
         for subheading in subheadings:
             initial_text = generate_initial_text(subheading)
-            subheading_keywords = {k: v for k, v in keywords.items(
-            ) if k in initial_text}  # Фильтруем ключевые слова
+            subheading_keywords = {k: v for k, v in keywords.items()}  # Фильтруем ключевые слова
             section_text = insert_keywords(initial_text, subheading_keywords)
             f.write(f"{subheading}\n{section_text}\n\n")
             print(f"Текст для '{subheading}' добавлен в файл: {output_file}")
