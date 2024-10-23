@@ -17,7 +17,7 @@
             <a href="{{ url_for('generate') }}" class="btn btn-link">Генерация</a>
             <a href="{{ url_for('uniq') }}" class="btn btn-link">Уникализация</a>
         </div>
-        <form action="/" method="POST">
+        <form action="/generate" method="POST">
             <div class="form-group">
                 <label for="textarea1">Подзаголовки</label>
                 <textarea name="headers" class="form-control" id="textarea1" rows="3" placeholder="Введите подзаголовки"></textarea>
