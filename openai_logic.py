@@ -69,19 +69,21 @@ def insert_keywords(text, keywords, model="gpt-4o-mini"):
 
 
 # Функция для обработки и генерации текста на основе подзаголовков и ключевых слов
-def process_headings(subheadings, keywords, output_file='ans.txt'):
+def process_headings(subheadings, keywords, output_file='/home/onlineautomatedcopywriting/openai-pythonanywhere-site/ans.txt'):
     # Проверяем, существует ли папка, и создаем её, если необходимо
     output_dir = os.path.dirname(output_file)
     if not os.path.exists(output_dir) and output_dir:
         os.makedirs(output_dir)
 
     # Открываем файл для записи
-    with open(output_file, "w+", encoding="utf-8") as f:
+    with open(output_file, "w", encoding="utf-8") as f:
         # Генерация начального текста и вставка ключевых слов для каждого подзаголовка
         for subheading in subheadings:
             initial_text = generate_initial_text(subheading)
+            print(subheading)
             subheading_keywords = {k: v for k, v in keywords.items()}  # Фильтруем ключевые слова
             section_text = insert_keywords(initial_text, subheading_keywords)
+            print(section_text)
             f.write(f"{subheading}\n{section_text}\n\n")
             print(f"Текст для '{subheading}' добавлен в файл: {output_file}")
 
